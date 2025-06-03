@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: frontend-ingress
+  name: product-service-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: letsencrypt-prod
@@ -9,16 +9,16 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - www.cloudmart.com
-      secretName: frontend-tls
+        - product.cloudmart.com
+      secretName: product-service-tls
   rules:
-    - host: www.cloudmart.com
+    - host: product.cloudmart.com
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: frontend
+                name: product-service
                 port:
                   number: 80

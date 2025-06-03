@@ -1,0 +1,22 @@
+apiVersion: v2
+name: product-service
+version: 0.1.0
+description: Helm chart for Cloudmart Product Service
+
+---
+# product-service/helm/values.yaml
+replicaCount: 2
+image:
+  repository: your-dockerhub-username/product-service
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+config:
+  port: 4000
+
+secret:
+  mongoUri: "mongodb+srv://yourusername:yourpassword@cluster.mongodb.net/cloudmart?retryWrites=true&w=majority"

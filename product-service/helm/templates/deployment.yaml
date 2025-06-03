@@ -1,0 +1,27 @@
+{{- include "product-service.fullname" . }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "product-service.fullname" . }}
+  labels:
+    app: {{ include "product-service.name" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "product-service.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "product-service.name" . }}
+    spec:
+      containers:
+        - name: product-service
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.config.port }}
+          env:
+            - name: PORT
+              value: "{{ .Values.config.port }}"
+            - name: MONGO_URI
+              value: "{{ .Values.secret.mongoUri }}"
