@@ -1,0 +1,21 @@
+{
+    "name": "cloudmart-product-service",
+    "version": "1.0.0",
+    "description": "Product API microservice for Cloudmart",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "node src/server.js",
+        "dev": "nodemon src/server.js"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.1.4",
+        "express": "^4.18.2",
+        "mongoose": "^7.3.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.22"
+    },
+    "author": "Your Name",
+    "license": "MIT"
+}
