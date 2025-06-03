@@ -1,0 +1,15 @@
+image:
+  repository: your-dockerhub-username/cloudmart-frontend
+  tag: latest
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "250m"
+    memory: "256Mi"
+
+ingress:
+  host: cloudmart.example.com
+  tlsSecret: cloudmart-frontend-tls
