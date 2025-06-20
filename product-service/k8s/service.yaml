@@ -2,13 +2,15 @@ apiVersion: v1
 kind: Service
 metadata:
   name: product-service
+  namespace: cloudmart-product
   labels:
-    app: cloudmart-product-service
+    app: cloudmart-product
 spec:
   selector:
-    app: cloudmart-product-service
+    app: cloudmart-product
   ports:
     - protocol: TCP
       port: 80
       targetPort: 4000
-  type: ClusterIP
+      nodePort: 30081  # You can omit this to let K8s auto-assign from 30000–32767
+  type: NodePort
